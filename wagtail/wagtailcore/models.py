@@ -250,11 +250,7 @@ class PageBase(models.base.ModelBase):
 
         if 'template' not in dct:
             # Define a default template path derived from the app name and model name
-            if hasattr(cls, 'template_extension'):
-                ext = cls.template_extension
-            else:
-                ext = "html"
-            cls.template = "%s/%s.%s" % (cls._meta.app_label, camelcase_to_underscore(name), ext)
+            cls.template = "%s/%s.html" % (cls._meta.app_label, camelcase_to_underscore(name))
 
         if 'ajax_template' not in dct:
             cls.ajax_template = None
